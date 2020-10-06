@@ -2,6 +2,8 @@ require 'httparty'
 require 'dotenv'
 Dotenv.load
 
+require_relative 'slack_api_error'
+
 class Recipient
 
   attr_reader :slack_id
@@ -15,7 +17,10 @@ class Recipient
   end
 
   def self.get(url, parameters: { token: KEY } )
-    HTTParty.get(url, query: parameters )
+    response = HTTParty.get(url, query: parameters )
+    raise SlackApiError if response.code != 200 || response['ok']
+
+    return response
   end
 
   def self.list
