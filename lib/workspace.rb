@@ -31,4 +31,9 @@ class Workspace
     return @selected
   end
 
+  def details
+    return "Please select user or channel, first." if @selected == nil
+    return @selected.details
+  end
+
 end

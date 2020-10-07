@@ -44,6 +44,8 @@ def main
       else
         puts "we could not find that channel"
       end
+    when "details"
+      puts workspace.details
     when "quit"
       break
     else
