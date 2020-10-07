@@ -13,6 +13,12 @@ require 'vcr'
 require "dotenv"
 Dotenv.load
 
+require_relative "../lib/channel"
+require_relative "../lib/recipient"
+require_relative "../lib/slack_api_error"
+require_relative "../lib/user"
+require_relative "../lib/workspace"
+
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 VCR.configure do |config|

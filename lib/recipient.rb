@@ -18,7 +18,7 @@ class Recipient
 
   def self.get(url, parameters: { token: KEY } )
     response = HTTParty.get(url, query: parameters )
-    raise SlackApiError if response.code != 200 || response['ok']
+    raise SlackApiError unless response['ok']
 
     return response
   end
