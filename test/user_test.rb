@@ -36,4 +36,19 @@ describe "User" do
       end
     end
   end
+
+  describe "details" do
+    before do
+      @user = User.new("34839", "Name", "Real Name", "status text", ":thumbsup:" )
+    end
+
+    it "returns an instance of string" do
+      expect(@user.details).must_be_instance_of String
+    end
+
+    it "returns accurate details for an specific user" do
+      output = "Username: Name\nReal Name: Real Name\nSlack ID: 34839\nStatus: status text\nStatus Emoji: :thumbsup:"
+      expect(@user.details).must_equal output
+    end
+  end
 end

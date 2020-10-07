@@ -33,4 +33,9 @@ class Channel < Recipient
     return all_our_pretty_channels
   end
 
+  def details
+    output = "Name: #{name}\nSlack ID: #{slack_id}\nMember Count: #{member_count}\nTopic: #{topic}"
+    return output
+  end
+
 end

@@ -33,4 +33,19 @@ describe "Channel class" do
       end
     end
   end
+
+  describe "details" do
+    before do
+      @channel = Channel.new("34839", "Name", "a place where human beings talk about things", 10)
+    end
+
+    it "returns an instance of string" do
+      expect(@channel.details).must_be_instance_of String
+    end
+
+    it "returns accurate details for an specific user" do
+      output = "Name: Name\nSlack ID: 34839\nMember Count: 10\nTopic: a place where human beings talk about things"
+       expect(@channel.details).must_equal output
+    end
+  end
 end

@@ -34,4 +34,9 @@ class User < Recipient
     end
     return all_our_pretty_users
   end
+
+  def details
+    output = "Username: #{username}\nReal Name: #{real_name}\nSlack ID: #{slack_id}\nStatus: #{status_text}\nStatus Emoji: #{status_emoji}"
+    return output
+  end
 end

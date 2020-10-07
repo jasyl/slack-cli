@@ -31,4 +31,11 @@ describe "Recipient class" do
       expect {Recipient.list}.must_raise NotImplementedError
     end
   end
+
+  describe "details" do
+    it "raises error if invoked without subclassing" do
+      @new_recipient = Recipient.new(20020202)
+      expect {@new_recipient.details}.must_raise NotImplementedError
+    end
+  end
 end
