@@ -11,6 +11,9 @@ class User < Recipient
   BASE_URL = "https://slack.com/api/users.list"
 
   def initialize(slack_id, username, real_name, status_text, status_emoji)
+
+    raise SlackApiError if [slack_id, username, real_name, status_text, status_emoji].include? nil
+
     super(slack_id)
     @username = username
     @real_name = real_name
