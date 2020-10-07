@@ -53,4 +53,62 @@ describe "Workspace" do
       expect(@workspace.channels.first).must_be_instance_of Channel
     end
   end
+
+  describe "select user/channel" do
+    before do
+      VCR.use_cassette("workspace_get") do
+        @workspace = Workspace.new
+      end
+    end
+
+    it "returns an instance of user when select user is called" do
+      expect(@workspace.select("user", input: "slackbot")).must_be_instance_of User
+    end
+
+    it "returns an instance of channel when select channel is called" do
+      expect(@workspace.select("channel", input: "random")).must_be_instance_of Channel
+    end
+
+    it "returns the channel with name matching input name" do
+      expect(@workspace.select("channel", input: "random").name).must_equal "random"
+    end
+
+    it "returns the user with name matching input name" do
+      expect(@workspace.select("user", input: "slackbot").username).must_equal "slackbot"
+    end
+
+    it "returns the channel with correct name when called by id #" do
+      expect(@workspace.select("channel", input: "C01BKP67695".downcase).name).must_equal "random"
+    end
+
+    it "returns the user with correct name when called by id #" do
+      expect(@workspace.select("user", input: "USLACKBOT".downcase).username).must_equal "slackbot"
+    end
+
+    it "returns nil if there is no such user" do
+      expect(@workspace.select("user", input: "Abed")).must_be_nil
+    end
+
+    it "returns nil if there is no such channel" do
+      expect(@workspace.select("channel", input: "Greendale")).must_be_nil
+    end
+
+    it "assigns the requested user to the @selected instance variable" do
+      @workspace.select("user", input: "slack_shack_ringo_api")
+
+      expect(@workspace.selected.username).must_equal "slack_shack_ringo_api"
+      expect(@workspace.selected).must_be_kind_of User
+    end
+
+    it "assigns the requested channel to the @selected instance variable" do
+      @workspace.select("channel", input: "random")
+
+      expect(@workspace.selected.name).must_equal "random"
+      expect(@workspace.selected).must_be_kind_of Channel
+    end
+
+    it "returns nil if user does not provide name or slack_id" do
+      expect(@workspace.select("user")).must_be_nil
+    end
+  end
 end

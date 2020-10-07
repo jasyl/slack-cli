@@ -4,11 +4,12 @@ require_relative 'channel'
 
 class Workspace
 
-  attr_reader :users, :channels
+  attr_reader :users, :channels, :selected
 
   def initialize
     @users = User.list
     @channels = Channel.list
+    @selected = nil
   end
 
   def list(thing_to_print)
@@ -19,6 +20,15 @@ class Workspace
       printable_users = @channels.map { |channel| {"Channel Name" => channel.name, "Member Count" => channel.member_count, "Slack ID" => channel.slack_id, "Topic" => channel.topic} }
       return printable_users
     end
+  end
+
+  def select(recipient_type, input: nil)
+    if recipient_type == "user"
+      @selected = @users.find {|user| user.username.downcase == input || user.slack_id.downcase == input}
+    elsif recipient_type == "channel"
+      @selected = @channels.find {|channel| channel.name.downcase == input || channel.slack_id.downcase == input}
+    end
+    return @selected
   end
 
 end
