@@ -111,4 +111,24 @@ describe "Workspace" do
       expect(@workspace.select("user")).must_be_nil
     end
   end
+
+  describe "details" do
+    before do
+      VCR.use_cassette("workspace_get") do
+        @workspace = Workspace.new
+      end
+    end
+
+    it "catches and appropriately deals with a nil input" do
+      output = "Please select user or channel, first."
+      expect(@workspace.details).must_equal output
+    end
+
+    it "returns a string" do
+      output = "Please select user or channel, first."
+      @workspace.select("channel", input: "random")
+      expect(@workspace.details).must_be_kind_of String
+      expect(@workspace.details).wont_equal output
+    end
+  end
 end
