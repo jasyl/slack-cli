@@ -11,6 +11,9 @@ class Channel < Recipient
   BASE_URL = "https://slack.com/api/conversations.list"
 
   def initialize(slack_id, name, topic, member_count)
+
+    raise SlackApiError if [slack_id, name, topic, member_count].include? nil
+
     super(slack_id)
     @name = name
     @topic = topic
