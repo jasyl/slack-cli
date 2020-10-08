@@ -13,7 +13,7 @@ def main
   #puts load information (number of users and channels, etc)
   puts "There are #{workspace.users.length} users and #{workspace.channels.length} channels".colorize(:light_yellow)
 
-  options = "\nWhat would you like to do?\n— list users\n— list channels\n— select user\n— select channel\n— details\n— quit\n".colorize(:light_green)
+  options = "\nWhat would you like to do?\n— list users\n— list channels\n— select user\n— select channel\n— details\n- send message\n— quit\n".colorize(:light_green)
 
   while true
     puts options
@@ -46,6 +46,14 @@ def main
       end
     when "details"
       puts workspace.details
+    when "send message"
+      if workspace.is_selected?
+        puts "what message would you like to send?"
+        text = gets.chomp
+        puts workspace.send_message(text)
+      else
+        puts workspace.send_message("I didn't pick a user/channel D:")
+      end
     when "quit"
       break
     else
@@ -57,16 +65,5 @@ def main
 end
 
 main if __FILE__ == $PROGRAM_NAME
-
-# URL = "https://slack.com/api/conversations.list"
-# KEY = ENV["SLACK_TOKEN"]
-# response = HTTParty.get(URL, query: { token: KEY } )
-
-
-# blah blah as part of code
-# if "list users"
-# tp workspace.list("users")
-# if "list channels"
-# tp workspace.list("channels")
 
 # TODO look into soft wrap or continue on new line for table_print
