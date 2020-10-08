@@ -63,4 +63,194 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"ok":false,"error":"channel_not_found"}'
   recorded_at: Wed, 07 Oct 2020 23:54:13 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: token=<SLACK_TOKEN>&text=message&channel=20020202&icon_emoji=%3Agrinning%3A&username=Earth%20-%20Jasmine%20-%20API%20Project
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 08 Oct 2020 23:04:54 GMT
+      Server:
+      - Apache
+      X-Slack-Req-Id:
+      - ba3440230563ed3b3dab6d0a2818d1db
+      X-Oauth-Scopes:
+      - chat:write,channels:read,users:read,chat:write.customize
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Slack-Backend:
+      - r
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      X-Accepted-Oauth-Scopes:
+      - chat:write
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
+      Content-Length:
+      - '60'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-ouwk,haproxy-edge-pdx-jpry
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"channel_not_found"}'
+  recorded_at: Thu, 08 Oct 2020 23:04:54 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: token=<SLACK_TOKEN>&text=message&channel=20020202&icon_emoji=%3Akissing_heart%3A&username=murder_bot
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 08 Oct 2020 23:06:30 GMT
+      Server:
+      - Apache
+      X-Slack-Req-Id:
+      - fb55512b0203815216475e7631d9c381
+      X-Oauth-Scopes:
+      - chat:write,channels:read,users:read,chat:write.customize
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Slack-Backend:
+      - r
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      X-Accepted-Oauth-Scopes:
+      - chat:write
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
+      Content-Length:
+      - '60'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-q20r,haproxy-edge-pdx-636g
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"channel_not_found"}'
+  recorded_at: Thu, 08 Oct 2020 23:06:30 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: token=<SLACK_TOKEN>&text=message&channel=U01BKP9SFK9
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 08 Oct 2020 23:20:53 GMT
+      Server:
+      - Apache
+      X-Slack-Req-Id:
+      - 4e35aab286f70e741a12f53fc74baa3d
+      X-Oauth-Scopes:
+      - chat:write,channels:read,users:read,chat:write.customize
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Slack-Backend:
+      - r
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      X-Accepted-Oauth-Scopes:
+      - chat:write
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
+      Content-Length:
+      - '335'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-mki5,haproxy-edge-pdx-23kb
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"D01C0N3V11R","ts":"1602199253.000100","message":{"bot_id":"B01CQBDFDH6","type":"message","text":"message","user":"U01BXDDM9D3","ts":"1602199253.000100","team":"T01BKP66VQF","bot_profile":{"id":"B01CQBDFDH6","deleted":false,"name":"Slack
+        Shack - Ringo - API Project","updated":1601940231,"app_id":"A01CD505VFB","icons":{"image_36":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_36.png","image_48":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_48.png","image_72":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/service_72.png"},"team_id":"T01BKP66VQF"}}}'
+  recorded_at: Thu, 08 Oct 2020 23:20:53 GMT
 recorded_with: VCR 6.0.0
