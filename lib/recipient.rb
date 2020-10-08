@@ -30,6 +30,13 @@ class Recipient
         text: message,
         channel: slack_id
     }
+
+    begin
+    bot_attributes = JSON.parse(File.read("bot-settings.json"))
+    body.merge!(bot_attributes)
+    rescue JSON::ParserError
+    end
+
     response = HTTParty.post(post_url, body: body)
 
     raise SlackApiError unless response['ok']

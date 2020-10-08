@@ -48,10 +48,15 @@ describe "Recipient class" do
       end
     end
 
-    # it "returns a string when message sent to valid channel" do
-    #   VCR.use_cassette("recipient_post") do
-    #     expect()
-    #   end
-    # end
+    it "rescues an error if the bot-settings.json file is empty" do
+      VCR.use_cassette("recipient_post") do
+        File.open("bot-settings.json","w") do |f|
+          f.write("")
+        end
+        @new_recipient = Recipient.new("U01BKP9SFK9")
+        expect(@new_recipient.post("message")).must_equal "Your message was delivered!"
+
+      end
+    end
   end
 end
