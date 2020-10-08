@@ -31,9 +31,17 @@ class Workspace
     return @selected
   end
 
+  def is_selected?
+    return !!@selected
+  end
+
   def details
-    return "Please select user or channel, first." if @selected == nil
+    return "Please select user or channel, first." unless is_selected?
     return @selected.details
   end
 
+  def send_message(text)
+    return "Please select user or channel, first." unless is_selected?
+    return @selected.post(text)
+  end
 end

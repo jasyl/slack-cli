@@ -131,4 +131,42 @@ describe "Workspace" do
       expect(@workspace.details).wont_equal output
     end
   end
+
+  describe "send message" do
+    before do
+      VCR.use_cassette("workspace_get") do
+        @workspace = Workspace.new
+      end
+    end
+    
+    it "sends message to valid channel" do
+      VCR.use_cassette("workspace_post") do
+        @workspace.select("channel", input: "random")
+        expect(@workspace.send_message("Hello, Random Channel!")).must_equal "Your message was delivered!"
+      end
+    end
+
+    it "warns user if they didn't select user/channel first" do
+      VCR.use_cassette("workspace_post") do
+        expect(@workspace.send_message("hedgehog!")).must_equal "Please select user or channel, first."
+      end
+    end
+  end
+
+  describe "is_selected?" do
+    before do
+      VCR.use_cassette("workspace_get") do
+        @workspace = Workspace.new
+      end
+    end
+
+    it "returns false if workspace does not have a selected recipient" do
+      expect(@workspace.is_selected?).must_equal false
+    end
+
+    it "returns true if workspace does have a selected recipient" do
+      @workspace.select("user", input: "slackbot")
+      expect(@workspace.is_selected?).must_equal true
+    end
+  end
 end
