@@ -1,6 +1,8 @@
 require 'table_print'
+require 'json'
 require_relative 'user'
 require_relative 'channel'
+
 
 class Workspace
 
@@ -22,11 +24,11 @@ class Workspace
     end
   end
 
-  def select(recipient_type, input: nil)
+  def select(recipient_type, input: "")
     if recipient_type == "user"
-      @selected = @users.find {|user| user.username.downcase == input || user.slack_id.downcase == input}
+      @selected = @users.find {|user| user.username.downcase == input.downcase || user.slack_id.downcase == input.downcase }
     elsif recipient_type == "channel"
-      @selected = @channels.find {|channel| channel.name.downcase == input || channel.slack_id.downcase == input}
+      @selected = @channels.find {|channel| channel.name.downcase == input.downcase || channel.slack_id.downcase == input.downcase }
     end
     return @selected
   end
@@ -43,5 +45,17 @@ class Workspace
   def send_message(text)
     return "Please select user or channel, first." unless is_selected?
     return @selected.post(text)
+  end
+
+  def customize_bot(username, emoji)
+    # we format in hash
+    body = {
+        icon_emoji: emoji,
+        username: username
+    }
+    # save hash to json file
+    File.open("bot-settings.json","w") do |f|
+      f.write(body.to_json)
+    end
   end
 end

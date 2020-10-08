@@ -169,4 +169,18 @@ describe "Workspace" do
       expect(@workspace.is_selected?).must_equal true
     end
   end
+
+  describe "customize_bot" do
+    before do
+      VCR.use_cassette("workspace_get") do
+        @workspace = Workspace.new
+      end
+    end
+
+    it "stores the emoji and username it's given in the json file" do
+      json = {"icon_emoji" => ":kissing_heart:","username" => "murder_bot"}
+      @workspace.customize_bot("murder_bot", ":kissing_heart:")
+      expect(JSON.parse(File.read("bot-settings.json"))).must_equal json
+    end
+  end
 end
