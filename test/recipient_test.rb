@@ -38,4 +38,20 @@ describe "Recipient class" do
       expect {@new_recipient.details}.must_raise NotImplementedError
     end
   end
+
+  describe "post" do
+
+    it "raises an error if message could not be delivered" do
+      VCR.use_cassette("recipient_post") do
+        @new_recipient = Recipient.new(20020202)
+        expect{@new_recipient.post("message")}.must_raise SlackApiError
+      end
+    end
+
+    # it "returns a string when message sent to valid channel" do
+    #   VCR.use_cassette("recipient_post") do
+    #     expect()
+    #   end
+    # end
+  end
 end

@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: token=<SLACK_TOKEN>&text=Hello%2C%20Random%20Channel%21&channel=C01BKP67695
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Oct 2020 23:57:02 GMT
+      Server:
+      - Apache
+      X-Slack-Req-Id:
+      - 73ec0f4bf5582063d6b85c444b8b142e
+      X-Oauth-Scopes:
+      - chat:write,channels:read,users:read,channels:join
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Slack-Backend:
+      - r
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      X-Accepted-Oauth-Scopes:
+      - chat:write
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
+      Content-Length:
+      - '348'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-f98x,haproxy-edge-pdx-g0kg
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C01BKP67695","ts":"1602115022.000100","message":{"bot_id":"B01BXD5J81K","type":"message","text":"Hello,
+        Random Channel!","user":"U01CD4VSXRP","ts":"1602115022.000100","team":"T01BKP66VQF","bot_profile":{"id":"B01BXD5J81K","deleted":false,"name":"Earth
+        - Jasmine - API Project","updated":1601939850,"app_id":"A01BTPM845U","icons":{"image_36":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_36.png","image_48":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_48.png","image_72":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/service_72.png"},"team_id":"T01BKP66VQF"}}}'
+  recorded_at: Wed, 07 Oct 2020 23:57:02 GMT
+recorded_with: VCR 6.0.0

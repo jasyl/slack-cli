@@ -23,6 +23,19 @@ class Recipient
     return response
   end
 
+  def post(message)
+    post_url = "https://slack.com/api/chat.postMessage"
+    body = {
+        token: KEY,
+        text: message,
+        channel: slack_id
+    }
+    response = HTTParty.post(post_url, body: body)
+
+    raise SlackApiError unless response['ok']
+    return "Your message was delivered!"
+  end
+
   def self.list
     raise NotImplementedError
   end
