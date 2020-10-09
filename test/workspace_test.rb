@@ -2,23 +2,18 @@ require_relative "test_helper"
 
 describe "Workspace" do
   describe "initialize" do
-    it "makes a workspace with the correct variables" do
-      VCR.use_cassette("workspace_get") do
-        @fake_workspace = Workspace.new
-
-        expect(@fake_workspace).must_be_instance_of Workspace
-        expect(@fake_workspace.users).must_be_instance_of Array
-        expect(@fake_workspace.channels).must_be_instance_of Array
-      end
-    end
-  end
-  
-  describe "list" do
     before do
       VCR.use_cassette("workspace_get") do
         @workspace = Workspace.new
       end
     end
+
+    it "makes a workspace with the correct variables" do
+      expect(@workspace).must_be_instance_of Workspace
+      expect(@workspace.users).must_be_instance_of Array
+      expect(@workspace.channels).must_be_instance_of Array
+    end
+
     it "check first user in workspace.users is correct" do
         first_user = @workspace.users.first
         expect(first_user.username).must_equal "slackbot"
@@ -51,6 +46,30 @@ describe "Workspace" do
 
     it "check that the channels are an instance of Channel" do
       expect(@workspace.channels.first).must_be_instance_of Channel
+    end
+  end
+
+  describe "list" do
+    before do
+      VCR.use_cassette("workspace_get") do
+        @workspace = Workspace.new
+      end
+    end
+
+    it "returns an array" do
+      expect(@workspace.list("users")).must_be_kind_of Array
+      expect(@workspace.list("channels")).must_be_kind_of Array
+    end
+
+    it "returns the correct headers" do
+      expect(@workspace.list("channels")).must_include :name
+      expect(@workspace.list("channels")).must_include :member_count
+      expect(@workspace.list("channels")).must_include :slack_id
+      expect(@workspace.list("channels")).must_include :topic
+
+      expect(@workspace.list("users")).must_include :slack_id
+      expect(@workspace.list("users")).must_include :real_name
+      expect(@workspace.list("users")).must_include :username
     end
   end
 
@@ -94,9 +113,9 @@ describe "Workspace" do
     end
 
     it "assigns the requested user to the @selected instance variable" do
-      @workspace.select("user", input: "slack_shack_ringo_api")
+      @workspace.select("user", input: "slackbot")
 
-      expect(@workspace.selected.username).must_equal "slack_shack_ringo_api"
+      expect(@workspace.selected.username).must_equal "slackbot"
       expect(@workspace.selected).must_be_kind_of User
     end
 

@@ -16,11 +16,9 @@ class Workspace
 
   def list(thing_to_print)
     if thing_to_print == "users"
-      printable_users = @users.map { |user| { "User Name" => user.username, "Real Name" => user.real_name, "Slack ID" => user.slack_id} }
-      return printable_users
+      return [@users, :slack_id, :real_name, :username]
     elsif thing_to_print == "channels"
-      printable_users = @channels.map { |channel| {"Channel Name" => channel.name, "Member Count" => channel.member_count, "Slack ID" => channel.slack_id, "Topic" => channel.topic} }
-      return printable_users
+      return [@channels, :name, :member_count, :slack_id, :topic]
     end
   end
 
