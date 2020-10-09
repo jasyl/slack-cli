@@ -7,9 +7,7 @@ require_relative 'slack_api_error'
 class Recipient
 
   attr_reader :slack_id
-  # GET_BASE_URL = "https://slack.com/api/"
-  # MESSAGE_BASE_URL =
-  # # child classes will append their own url suffixes
+
   KEY = ENV["SLACK_TOKEN"]
 
   def initialize(slack_id)
@@ -18,8 +16,7 @@ class Recipient
 
   def self.get(url, parameters: { token: KEY } )
     response = HTTParty.get(url, query: parameters )
-    raise SlackApiError unless response['ok']
-
+    raise SlackApiError, "Error when getting info from #{url}" unless response['ok']
     return response
   end
 
@@ -39,15 +36,15 @@ class Recipient
 
     response = HTTParty.post(post_url, body: body)
 
-    raise SlackApiError unless response['ok']
+    raise SlackApiError, "Error when posting #{message}" unless response['ok']
     return "Your message was delivered!"
   end
 
   def self.list
-    raise NotImplementedError
+    raise NotImplementedError, "Call me in a child class"
   end
 
   def details
-    raise NotImplementedError
+    raise NotImplementedError, "Call me in a child class"
   end
 end

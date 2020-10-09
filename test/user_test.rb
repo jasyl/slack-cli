@@ -39,7 +39,7 @@ describe "User" do
 
   describe "details" do
     before do
-      @user = User.new("34839", "Name", "Real Name", "status text", ":thumbsup:" )
+      @user = User.new("USLACKBOT", "slackbot", "Slackbot", "", "" )
     end
 
     it "returns an instance of string" do
@@ -47,7 +47,7 @@ describe "User" do
     end
 
     it "returns accurate details for an specific user" do
-      output = "Username: Name\nReal Name: Real Name\nSlack ID: 34839\nStatus: status text\nStatus Emoji: :thumbsup:"
+      output = "Username: slackbot\nReal Name: Slackbot\nSlack ID: USLACKBOT\nStatus: \nStatus Emoji: "
       expect(@user.details).must_equal output
     end
   end

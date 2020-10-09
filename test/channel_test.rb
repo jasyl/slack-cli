@@ -36,7 +36,7 @@ describe "Channel class" do
 
   describe "details" do
     before do
-      @channel = Channel.new("34839", "Name", "a place where human beings talk about things", 10)
+      @channel = Channel.new("C01BKP67695", "random", "This channel is for... well, everything else. It’s a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!", 3)
     end
 
     it "returns an instance of string" do
@@ -44,7 +44,7 @@ describe "Channel class" do
     end
 
     it "returns accurate details for an specific user" do
-      output = "Name: Name\nSlack ID: 34839\nMember Count: 10\nTopic: a place where human beings talk about things"
+      output = "Name: random\nSlack ID: C01BKP67695\nMember Count: 3\nTopic: This channel is for... well, everything else. It’s a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!"
        expect(@channel.details).must_equal output
     end
   end
